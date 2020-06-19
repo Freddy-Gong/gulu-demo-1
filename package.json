@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:Freddy-Gong/gulu-demo-1.git",
   "author": "Freedy <21914103@zju.edu.cn>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
 }
