@@ -18,3 +18,77 @@ new Vue({
         loading3: false,
     }
 })
+
+//单元测试
+import chai from 'chai'
+const expect = chai.expect
+{
+    const Constructor = Vue.extend(Button)
+    const button = new Constructor({
+        propsData: {
+            icon: 'setting'
+        }
+    })
+    button.$mount()
+    let useElement = button.$el.querySelector('use')
+    expect(useElement.getAttribute('xlink:href')).to.eq('#i-setting')
+    button.$el.remove()
+    button.$destroy()
+}
+{
+    const Constructor = Vue.extend(Button)
+    const button = new Constructor({
+        propsData: {
+            icon: 'setting',
+            loading: true
+        }
+    })
+    button.$mount()
+    let useElement = button.$el.querySelector('use')
+    expect(useElement.getAttribute('xlink:href')).to.eq('#i-loading')
+    button.$el.remove()
+    button.$destroy()
+}
+{
+    const Constructor = Vue.extend(Button)
+    const button = new Constructor({
+        propsData: {
+            icon: 'setting',
+            loading: true
+        }
+    })
+    button.$mount('#test')
+    let svgElement = button.$el.querySelector('svg')
+    expect(window.getComputedStyle(svgElement).order).to.eq('1')
+    button.$el.remove()
+    button.$destroy()
+}
+{
+    const Constructor = Vue.extend(Button)
+    const button = new Constructor({
+        propsData: {
+            icon: 'setting',
+            iconPosition: 'right'
+        }
+    })
+    button.$mount()//一个div一次只能mounted一个元素
+    let svgElement = button.$el.querySelector('svg')
+    expect(window.getComputedStyle(svgElement).order).to.eq('')
+    button.$el.remove()
+    button.$destroy()
+}
+{
+    //mock
+    const Constructor = Vue.extend(Button)
+    const vm = new Constructor({
+        propsData: {
+            icon: 'setting',
+        }
+    })
+    vm.$mount()
+    vm.$on('click', function () {
+        console.log(1)
+    })//期望函数被执行
+    let button = gButton.$el
+    button.click()
+}
