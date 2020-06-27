@@ -1,6 +1,7 @@
 # 轮子 - 一个Vue UI组件
 
 [![Build Status](https://www.travis-ci.org/Freddy-Gong/gulu-demo-1.svg?branch=master)](https://www.travis-ci.org/Freddy-Gong/gulu-demo-1)
+https://img.shields.io/github/package-json/dependency-version/Freddy-Gong/gulu-demo-1/package.json
 
 ## 介绍
 
