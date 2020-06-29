@@ -1,16 +1,16 @@
-.g-icon {
+.g-icon[data-v-effca3] {
   width: 1em;
   height: 1em;
 }
-@keyframes spin {
-  0% {
+@keyframes spin-data-v-7f2fa7 {
+0% {
     transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
-.g-button {
+100% {
+    transform: rotate(360deg);
+}
+}
+.g-button[data-v-7f2fa7] {
   font-size: var(--font-size);
   height: var(--button-height);
   padding: 0 1em;
@@ -22,30 +22,30 @@
   align-items: center;
   vertical-align: middle;
 }
-.g-button:hover {
+.g-button[data-v-7f2fa7]:hover {
   border-color: var(--border-color-hover);
 }
-.g-button:focus {
+.g-button[data-v-7f2fa7]:focus {
   outline: none;
 }
-.g-button:active {
+.g-button[data-v-7f2fa7]:active {
   background-color: var(--button-active-bg);
 }
-.g-button > .icon {
+.g-button > .icon[data-v-7f2fa7] {
   order: 1;
   margin-right: 0.3em;
 }
-.g-button > .content {
+.g-button > .content[data-v-7f2fa7] {
   order: 2;
 }
-.g-button.icon-right > .icon {
+.g-button.icon-right > .icon[data-v-7f2fa7] {
   order: 2;
   margin-left: 0.3em;
   margin-right: 0;
 }
-.g-button.icon-right > .content {
+.g-button.icon-right > .content[data-v-7f2fa7] {
   order: 1;
 }
-.g-button .loading {
-  animation: spin 2s infinite linear;
+.g-button .loading[data-v-7f2fa7] {
+  animation: spin-data-v-7f2fa7 2s infinite linear;
 }

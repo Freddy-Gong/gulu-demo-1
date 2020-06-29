@@ -12775,6 +12775,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   components: {
     Icon: _icon.default
@@ -12812,7 +12821,21 @@ exports.default = _default;
   return _c("div", { staticClass: "wrapper", class: { error: _vm.error } }, [
     _c("input", {
       attrs: { type: "text", disabled: _vm.disabled, readonly: _vm.readonly },
-      domProps: { value: _vm.value }
+      domProps: { value: _vm.value },
+      on: {
+        change: function($event) {
+          return _vm.$emit("change", $event)
+        },
+        input: function($event) {
+          return _vm.$emit("input", $event)
+        },
+        focus: function($event) {
+          return _vm.$emit("focus", $event)
+        },
+        blur: function($event) {
+          return _vm.$emit("blur", $event)
+        }
+      }
     }),
     _vm._v(" "),
     _vm.error
@@ -12822,7 +12845,9 @@ exports.default = _default;
           [
             _c("icon", { attrs: { name: "error" } }),
             _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.error))])
+            _c("span", { staticClass: "errorMessage" }, [
+              _vm._v(_vm._s(_vm.error))
+            ])
           ],
           1
         )
@@ -12891,6 +12916,23 @@ new _vue.default({
     loading1: false,
     loading2: false,
     loading3: false
+  },
+  created: function created() {
+    var _this = this;
+
+    setTimeout(function () {
+      var event = new Event('change');
+
+      var inputElement = _this.$el.querySelector('input');
+
+      inputElement.dispatchEvent(event);
+    }, 3000);
+  },
+  methods: {
+    inputChange: function inputChange(e) {
+      console.log(e.target.value);
+      console.log(e);
+    }
   }
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon.vue":"src/icon.vue","./button-group.vue":"src/button-group.vue","./input.vue":"src/input.vue"}],"../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
