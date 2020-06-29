@@ -42,8 +42,10 @@
     <div id="app">
 
         <div class="box">
-            <g-input value='张' @change="inputChange"></g-input>
-
+            <g-input value='张' v-model="message"></g-input>
+            <p>{{message}}</p>
+            <!-- 双向绑定：1.接受一个value的props
+            2.你要触发一个input事件，事件名必须叫input，事件的第一个参数必须是value的值。 -->
         </div>
 
         <div class="box">
