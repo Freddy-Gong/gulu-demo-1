@@ -29,11 +29,13 @@ IE 8 及以上浏览器都支持此样式
         }
 ```
 IE 15 及以上浏览器都支持此样式
+
 2. 安装 gulu
     ```
     npm i -S freddy-gong-1
     yarn add -D freddy-gong-1
     ```
+
 3. 引入
    ```
    import {Button,ButtonGroup,Icon} from 'freddy-gong-1'
