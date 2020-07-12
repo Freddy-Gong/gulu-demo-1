@@ -105,6 +105,15 @@
 .row[data-v-3446c3] {
   display: flex;
 }
+.row.align-left[data-v-3446c3] {
+  justify-content: flex-start;
+}
+.row.align-right[data-v-3446c3] {
+  justify-content: flex-end;
+}
+.row.align-center[data-v-3446c3] {
+  justify-content: center;
+}
 .col[data-v-78e50a] {
   height: 100px;
   width: 50%;
