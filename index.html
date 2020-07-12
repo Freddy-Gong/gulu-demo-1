@@ -36,12 +36,28 @@
             margin: 20px;
         }
     </style>
+
 </head>
 
 <body>
     <div id="app">
-
-        <div class="box">
+        <g-row>
+            <g-col span="2"></g-col>
+            <g-col span="22"></g-col>
+        </g-row>
+        <g-row>
+            <g-col span='4'></g-col>
+            <g-col span='10'></g-col>
+            <g-col span='10'></g-col>
+        </g-row>
+        <g-row>
+            <g-col></g-col>
+            <g-col></g-col>
+            <g-col></g-col>
+            <g-col></g-col>
+        </g-row>
+        <hr>
+        <div class=" box">
             <g-input value='张' v-model="message"></g-input>
             <p>{{message}}</p>
             <!-- 双向绑定：1.接受一个value的props
