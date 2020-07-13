@@ -32,40 +32,37 @@
     <style>.box {
             margin: 20px;
         }</style>
-
+    <style>.demo {
+            background-color: brown;
+            border: 1px solid gray;
+            height: 100px;
+            width: 100%;
+        }</style>
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 
 <body>
     <div id="app">
-        <div style="border: 1px solid black;">
-            <g-row gutter="20">
-                <g-col span="2" :phone="{span:24}" :ipad="{span:8}" :pc="{span:4}" :narrow-pc="{span:2}" :wide-pc="{span:1}">1</g-col>
-                <!--bug 目前offset不能再第一个元素上面写-->
-                <g-col span="20" :phone="{span:24}" :ipad="{span:16}" :pc="{span:20}" :narrow-pc="{span:22}" :wide-pc="{span:23}">2</g-col>
-                <!-- 在HTML里两个单词之间要用短线链接 -->
-            </g-row>
-        </div>
-        <hr>
-        <div class=" box">
-            <g-input value="张" v-model="message"></g-input>
-            <p>{{message}}</p>
-            <!-- 双向绑定：1.接受一个value的props
-            2.你要触发一个input事件，事件名必须叫input，事件的第一个参数必须是value的值。 -->
-        </div>
-
-        <div class="box">
-            <g-button icon="settings" :loading="loading1" @click="loading1=!loading1">设置</g-button>
-            <g-button :loading="loading2" @click="loading2=!loading2">设置</g-button>
-            <g-button icon="settings" icon-position="right" :loading="loading3" @click="loading3=!loading3">设置
-            </g-button>
-            <g-button-group>
-                <g-button icon="left">上一页</g-button>
-                <g-button>更多</g-button>
-                <g-button icon="right" icon-position="right">下一页</g-button>
-            </g-button-group>
-        </div>
+        <g-row>
+            <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}">
+                <div class="demo"></div>
+            </g-col>
+            <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}">
+                <div class="demo"></div>
+            </g-col>
+            <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}">
+                <div class="demo"></div>
+            </g-col>
+            <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}">
+                <div class="demo"></div>
+            </g-col>
+            <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}">
+                <div class="demo"></div>
+            </g-col>
+            <g-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}">
+                <div class="demo"></div>
+            </g-col>
+        </g-row>
     </div>
-    <div id="test"></div>
     <script src="/app.a6a4d504.js"></script>
 </body>
 
