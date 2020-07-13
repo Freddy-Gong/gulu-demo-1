@@ -39,9 +39,10 @@
     <div id="app">
         <div style="border: 1px solid black;">
             <g-row gutter="20">
-                <g-col span="2" :phone="{span:12}" :ipad="{span:8}" :pc="{span:4}" :narrow-pc="{span:2}" :wide-pc="{span:1}">1</g-col>
+                <g-col span="2" :phone="{span:24}" :ipad="{span:8}" :pc="{span:4}" :narrow-pc="{span:2}" :wide-pc="{span:1}">1</g-col>
                 <!--bug 目前offset不能再第一个元素上面写-->
-                <g-col span="20" :phone="{span:12,offset:0}" :ipad="{span:16}" :pc="{span:20}" :narrow-pc="{span:22}" :wide-pc="{span:23}">2</g-col>
+                <g-col span="20" :phone="{span:24}" :ipad="{span:16}" :pc="{span:20}" :narrow-pc="{span:22}" :wide-pc="{span:23}">2</g-col>
+                <!-- 在HTML里两个单词之间要用短线链接 -->
             </g-row>
         </div>
         <hr>
