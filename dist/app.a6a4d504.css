@@ -850,7 +850,6 @@
 .layout[data-v-8fb155] {
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
   flex-grow: 1;
 }
 .layout.hasSider[data-v-8fb155] {
@@ -859,4 +858,20 @@
 }
 .content[data-v-4338fc] {
   flex-grow: 1;
+}
+.sider[data-v-8057eb] {
+  position: relative;
+}
+.sider > button[data-v-8057eb] {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.sider .slider-enter-active[data-v-8057eb],
+.sider .slider-leave-active[data-v-8057eb] {
+  transition: transform 1s;
+}
+.sider .slider-enter[data-v-8057eb],
+.sider .slider-leave-to[data-v-8057eb] {
+  transform: translateX(-150px);
 }
