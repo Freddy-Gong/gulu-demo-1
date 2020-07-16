@@ -867,11 +867,9 @@
   top: 0;
   right: 0;
 }
-.sider .slider-enter-active[data-v-8057eb],
-.sider .slider-leave-active[data-v-8057eb] {
-  transition: transform 1s;
+.slide-fade-leave-active[data-v-8057eb] {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
 }
-.sider .slider-enter[data-v-8057eb],
-.sider .slider-leave-to[data-v-8057eb] {
-  transform: translateX(-150px);
+.slide-fade-enter[data-v-8057eb], .slide-fade-leave-to[data-v-8057eb] {
+  margin-left: -150px;
 }

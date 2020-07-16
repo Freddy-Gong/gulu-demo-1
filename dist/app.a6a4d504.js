@@ -13330,7 +13330,7 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "slide" } }, [
+  return _c("transition", { attrs: { name: "slide-fade" } }, [
     _vm.visible
       ? _c(
           "div",
@@ -13604,7 +13604,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54110" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63119" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
