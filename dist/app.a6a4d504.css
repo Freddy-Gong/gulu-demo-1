@@ -873,3 +873,19 @@
 .slide-fade-enter[data-v-8057eb], .slide-fade-leave-to[data-v-8057eb] {
   margin-left: -150px;
 }
+.toast[data-v-1835c3] {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  line-height: 1.8;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background: rgba(62, 63, 66, 0.4);
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 0 16px;
+}

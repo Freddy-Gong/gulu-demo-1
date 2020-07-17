@@ -10,6 +10,8 @@ import Content from './content.vue'
 import Sider from './sider.vue'
 import Header from './header.vue'
 import Footer from './footer.vue'
+import Toast from './toast.vue'
+import Plugin from './plugin.js'
 
 
 Vue.component('g-input', Input)
@@ -23,11 +25,8 @@ Vue.component('g-content', Content)
 Vue.component('g-sider', Sider)
 Vue.component('g-header', Header)
 Vue.component('g-footer', Footer)
-
-
-
-
-
+Vue.component('g-toast', Toast)
+Vue.use(Plugin)
 
 
 new Vue({
@@ -38,11 +37,13 @@ new Vue({
         loading3: false,
         message: 'hi'
     },
+    created() {
+        this.$toast('woso')
+    },
     methods: {
-        inputChange(e) {
-            console.log(e.target.value)
-            console.log(e)
+        showToast() {
         }
     }
-})
+}
+)
 
