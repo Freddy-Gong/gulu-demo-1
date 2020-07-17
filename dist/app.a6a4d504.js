@@ -13522,7 +13522,70 @@ exports.default = void 0;
 //
 //
 //
-var _default = {};
+//
+//
+//
+//
+//
+var _default = {
+  name: "GuluToast",
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: false
+    },
+    autoCloseDelay: {
+      type: Number,
+      default: 300
+    },
+    closeButton: {
+      type: Object,
+      default: function _default() {
+        //如果你的default值是一个对象，不能直接写成一个对象，而是要写成一个函数，再return这个对象。
+        return {
+          text: "关闭",
+          callback: undefined
+        };
+      }
+    },
+    enableHtml: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted() {
+    this.upDateStyles();
+    this.execAutoClose();
+  },
+  methods: {
+    execAutoClose: function execAutoClose() {
+      var _this = this;
+
+      if (this.autoClose) {
+        setTimeout(function () {
+          _this.close();
+        }, this.autoCloseDelay * 1000);
+      }
+    },
+    upDateStyles: function upDateStyles() {
+      var _this2 = this;
+
+      this.$nextTick(function () {
+        //类似于setTimeout，只不过不用写时间。
+        _this2.$refs.line.style.height = "".concat(_this2.$refs.toast.getBoundingClientRect().height //style只能获取内联元素的style
+        , "px");
+      });
+    },
+    close: function close() {
+      this.$el.remove();
+      this.$destroy(); //不能从页面中删掉自己。
+    },
+    onClickClose: function onClickClose() {
+      this.close();
+      if (this.closeButton && typeof this.closeButton.callback === "function") this.closeButton.callback();
+    }
+  }
+};
 exports.default = _default;
         var $1835c3 = exports.default || module.exports;
       
@@ -13536,7 +13599,29 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "toast" }, [_vm._t("default")], 2)
+  return _c("div", { ref: "toast", staticClass: "toast" }, [
+    _c(
+      "div",
+      { staticClass: "message" },
+      [
+        !_vm.enableHtml
+          ? _vm._t("default")
+          : _c("div", {
+              staticClass: "content",
+              domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
+            })
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _c("div", { ref: "line", staticClass: "line" }),
+    _vm._v(" "),
+    _vm.closeButton
+      ? _c("span", { staticClass: "close", on: { click: _vm.onClickClose } }, [
+          _vm._v(_vm._s(_vm.closeButton.text))
+        ])
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13585,9 +13670,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _default = {
   install: function install(Vue, options) {
-    Vue.prototype.$toast = function (message) {
+    Vue.prototype.$toast = function (message, toastOptions) {
       var Constructor = Vue.extend(_toast.default);
-      var toast = new Constructor();
+      var toast = new Constructor({
+        propsData: toastOptions
+      });
       toast.$slots.default = [message];
       toast.$mount();
       document.body.appendChild(toast.$el);
@@ -13663,7 +13750,15 @@ new _vue.default({
     message: 'hi'
   },
   created: function created() {
-    this.$toast('woso');
+    this.$toast('asaaaaaadddddddaaaaaaaaaaaaaaaaaaaaaaaaaaa', {
+      closeButton: {
+        text: '知道了',
+        callback: function callback() {
+          console.log('用户说他知道了');
+        }
+      },
+      enableHtml: true
+    });
   },
   methods: {
     showToast: function showToast() {}
