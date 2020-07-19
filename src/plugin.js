@@ -1,6 +1,6 @@
 import Toast from './toast.vue'
 
-function createToast({ Vue, message, toastOptions }) {
+function createToast({ Vue, message, toastOptions, onClose }) {
     let Constructor = Vue.extend(Toast)
     let toast = new Constructor({
         propsData: toastOptions
@@ -8,6 +8,7 @@ function createToast({ Vue, message, toastOptions }) {
     )
     toast.$slots.default = [message]
     toast.$mount()
+    toast.$on('close', onClose)
     document.body.appendChild(toast.$el)
     return toast
 }
@@ -17,7 +18,11 @@ export default {
     install(Vue, options) {
         Vue.prototype.$toast = function (message, toastOptions) {
             if (currentToast) { currentToast.close() }
-            currentToast = createToast({ Vue, message, toastOptions })
+            currentToast = createToast({
+                Vue, message, toastOptions, onClose: () => {
+                    currentToast = null
+                }
+            })
         }
     }
 

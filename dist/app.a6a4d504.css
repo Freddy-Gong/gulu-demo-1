@@ -873,9 +873,64 @@
 .slide-fade-enter[data-v-8057eb], .slide-fade-leave-to[data-v-8057eb] {
   margin-left: -150px;
 }
-.toast[data-v-1835c3] {
+@keyframes slide-up-data-v-1835c3 {
+0% {
+    opacity: 0;
+    transform: translateY(100%);
+}
+100% {
+    opacity: 1;
+    transform: translateY(0%);
+}
+}
+@keyframes slide-down-data-v-1835c3 {
+0% {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+100% {
+    opacity: 1;
+    transform: translateY(0%);
+}
+}
+@keyframes slide-data-v-1835c3 {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
+.wrapper[data-v-1835c3] {
   position: fixed;
+  z-index: 1;
   left: 50%;
+  transform: translateX(-50%);
+}
+.wrapper.position-top[data-v-1835c3] {
+  top: 0;
+}
+.wrapper.position-top .toast[data-v-1835c3] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  animation: slide-down-data-v-1835c3 1s;
+}
+.wrapper.position-bottom[data-v-1835c3] {
+  bottom: 0;
+}
+.wrapper.position-bottom .toast[data-v-1835c3] {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  animation: slide-up-data-v-1835c3 1s;
+}
+.wrapper.position-middle[data-v-1835c3] {
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.wrapper.position-middle .toast[data-v-1835c3] {
+  animation: slide-data-v-1835c3 1s;
+}
+.toast[data-v-1835c3] {
   font-size: 14px;
   line-height: 1.8;
   min-height: 40px;
@@ -899,16 +954,4 @@
 }
 .toast .message[data-v-1835c3] {
   padding: 8px 0;
-}
-.toast.position-top[data-v-1835c3] {
-  top: 0;
-  transform: translateX(-50%);
-}
-.toast.position-bottom[data-v-1835c3] {
-  bottom: 0;
-  transform: translateX(-50%);
-}
-.toast.position-middle[data-v-1835c3] {
-  top: 50%;
-  transform: translate(-50%, -50%);
 }

@@ -1,11 +1,13 @@
 <template>
-  <div class="toast" ref="toast" :class="toastClasses">
-    <div class="message">
-      <slot v-if="!enableHtml"></slot>
-      <div class="content" v-else v-html="$slots.default[0]"></div>
+  <div class="wrapper" :class="toastClasses">
+    <div class="toast" ref="toast">
+      <div class="message">
+        <slot v-if="!enableHtml"></slot>
+        <div class="content" v-else v-html="$slots.default[0]"></div>
+      </div>
+      <div class="line" ref="line"></div>
+      <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
     </div>
-    <div class="line" ref="line"></div>
-    <span class="close" v-if="closeButton" @click="onClickClose">{{closeButton.text}}</span>
   </div>
 </template>
 <script>
@@ -64,6 +66,7 @@ export default {
     },
     close() {
       this.$el.remove();
+      this.$emit("close");
       this.$destroy(); //不能从页面中删掉自己。
     },
     onClickClose() {
@@ -84,9 +87,64 @@ export default {
 $font-size: 14px;
 $toast-min-height: 40px;
 $toast-bg: rgba(62, 63, 66, 0.4);
-.toast {
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes slide {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.wrapper {
   position: fixed;
+  z-index: 1;
   left: 50%;
+  transform: translateX(-50%);
+  &.position-top {
+    top: 0;
+    .toast {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      animation: slide-down 1s;
+    }
+  }
+  &.position-bottom {
+    bottom: 0;
+    .toast {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      animation: slide-up 1s;
+    }
+  }
+  &.position-middle {
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    .toast {
+      animation: slide 1s;
+    }
+  }
+}
+.toast {
   font-size: $font-size;
   line-height: 1.8;
   min-height: $toast-min-height;
@@ -109,18 +167,6 @@ $toast-bg: rgba(62, 63, 66, 0.4);
   }
   .message {
     padding: 8px 0;
-  }
-  &.position-top {
-    top: 0;
-    transform: translateX(-50%);
-  }
-  &.position-bottom {
-    bottom: 0;
-    transform: translateX(-50%);
-  }
-  &.position-middle {
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 </style>

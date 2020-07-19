@@ -13530,6 +13530,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 var _default = {
   name: "GuluToast",
   props: {
@@ -13588,6 +13590,7 @@ var _default = {
     },
     close: function close() {
       this.$el.remove();
+      this.$emit("close");
       this.$destroy(); //不能从页面中删掉自己。
     },
     onClickClose: function onClickClose() {
@@ -13614,10 +13617,8 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { ref: "toast", staticClass: "toast", class: _vm.toastClasses },
-    [
+  return _c("div", { staticClass: "wrapper", class: _vm.toastClasses }, [
+    _c("div", { ref: "toast", staticClass: "toast" }, [
       _c(
         "div",
         { staticClass: "message" },
@@ -13641,8 +13642,8 @@ exports.default = _default;
             [_vm._v(_vm._s(_vm.closeButton.text))]
           )
         : _vm._e()
-    ]
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13692,13 +13693,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function createToast(_ref) {
   var Vue = _ref.Vue,
       message = _ref.message,
-      toastOptions = _ref.toastOptions;
+      toastOptions = _ref.toastOptions,
+      onClose = _ref.onClose;
   var Constructor = Vue.extend(_toast.default);
   var toast = new Constructor({
     propsData: toastOptions
   });
   toast.$slots.default = [message];
   toast.$mount();
+  toast.$on('close', onClose);
   document.body.appendChild(toast.$el);
   return toast;
 }
@@ -13714,7 +13717,10 @@ var _default = {
       currentToast = createToast({
         Vue: Vue,
         message: message,
-        toastOptions: toastOptions
+        toastOptions: toastOptions,
+        onClose: function onClose() {
+          currentToast = null;
+        }
       });
     };
   }
