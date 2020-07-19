@@ -875,9 +875,7 @@
 }
 .toast[data-v-1835c3] {
   position: fixed;
-  top: 0;
   left: 50%;
-  transform: translateX(-50%);
   font-size: 14px;
   line-height: 1.8;
   min-height: 40px;
@@ -901,4 +899,16 @@
 }
 .toast .message[data-v-1835c3] {
   padding: 8px 0;
+}
+.toast.position-top[data-v-1835c3] {
+  top: 0;
+  transform: translateX(-50%);
+}
+.toast.position-bottom[data-v-1835c3] {
+  bottom: 0;
+  transform: translateX(-50%);
+}
+.toast.position-middle[data-v-1835c3] {
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
