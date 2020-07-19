@@ -13689,16 +13689,33 @@ var _toast = _interopRequireDefault(require("./toast.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function createToast(_ref) {
+  var Vue = _ref.Vue,
+      message = _ref.message,
+      toastOptions = _ref.toastOptions;
+  var Constructor = Vue.extend(_toast.default);
+  var toast = new Constructor({
+    propsData: toastOptions
+  });
+  toast.$slots.default = [message];
+  toast.$mount();
+  document.body.appendChild(toast.$el);
+  return toast;
+}
+
+var currentToast;
 var _default = {
   install: function install(Vue, options) {
     Vue.prototype.$toast = function (message, toastOptions) {
-      var Constructor = Vue.extend(_toast.default);
-      var toast = new Constructor({
-        propsData: toastOptions
+      if (currentToast) {
+        currentToast.close();
+      }
+
+      currentToast = createToast({
+        Vue: Vue,
+        message: message,
+        toastOptions: toastOptions
       });
-      toast.$slots.default = [message];
-      toast.$mount();
-      document.body.appendChild(toast.$el);
     };
   }
 };
@@ -13770,20 +13787,20 @@ new _vue.default({
     loading3: false,
     message: 'hi'
   },
-  created: function created() {
-    this.$toast('aaaa', {
-      position: 'middle',
-      closeButton: {
-        text: '知道',
-        callback: function callback() {
-          console.log('用户说他知道了');
-        }
-      },
-      enableHtml: true
-    });
-  },
+  created: function created() {},
   methods: {
-    showToast: function showToast() {}
+    showToast: function showToast() {
+      this.$toast('aaaa', {
+        position: 'middle',
+        closeButton: {
+          text: '知道',
+          callback: function callback() {
+            console.log('用户说他知道了');
+          }
+        },
+        enableHtml: true
+      });
+    }
   }
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon.vue":"src/icon.vue","./button-group.vue":"src/button-group.vue","./input.vue":"src/input.vue","./row.Vue":"src/row.Vue","./col.Vue":"src/col.Vue","./layout.vue":"src/layout.vue","./content.vue":"src/content.vue","./sider.vue":"src/sider.vue","./header.vue":"src/header.vue","./footer.vue":"src/footer.vue","./toast.vue":"src/toast.vue","./plugin.js":"src/plugin.js"}],"../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
