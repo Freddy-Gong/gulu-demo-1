@@ -13536,12 +13536,11 @@ var _default = {
   name: "GuluToast",
   props: {
     autoClose: {
-      type: Boolean,
-      default: false
-    },
-    autoCloseDelay: {
-      type: Number,
-      default: 300
+      type: [Boolean, Number],
+      default: false,
+      validator: function validator(value) {
+        return value === false || typeof value === "number";
+      }
     },
     closeButton: {
       type: Object,
@@ -13576,7 +13575,7 @@ var _default = {
       if (this.autoClose) {
         setTimeout(function () {
           _this.close();
-        }, this.autoCloseDelay * 1000);
+        }, this.autoClose * 1000);
       }
     },
     upDateStyles: function upDateStyles() {
@@ -13837,7 +13836,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58355" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52756" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
