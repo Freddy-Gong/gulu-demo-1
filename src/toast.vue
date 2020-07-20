@@ -153,18 +153,21 @@ $toast-bg: rgba(62, 63, 66, 0.4);
   border-radius: 4px;
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 0 16px;
+  padding-left: 16px;
   .close {
-    padding-left: 16px;
+    padding: 0 16px;
     cursor: pointer;
     flex-shrink: 0;
+    height: inherit;
+    border: 1px solid red;
   }
   .line {
-    height: 100%;
     border: 0.5px solid #666;
     margin-left: 16px;
   }
   .message {
+    display: flex;
+    flex-wrap: wrap;
     padding: 8px 0;
   }
 }

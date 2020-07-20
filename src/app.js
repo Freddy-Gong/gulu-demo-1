@@ -42,7 +42,7 @@ new Vue({
     },
     methods: {
         showToast() {
-            this.$toast('aaaa', {
+            this.$toast('wasdawsdaasdasdadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssss', {
                 position: 'middle',
                 closeButton: {
                     text: '知道',
