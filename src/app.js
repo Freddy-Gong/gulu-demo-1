@@ -12,6 +12,11 @@ import Header from './header.vue'
 import Footer from './footer.vue'
 import Toast from './toast.vue'
 import Plugin from './plugin.js'
+import Tabs from './tabs.vue'
+import TabsHead from './tabs-head.vue'
+import TabsBody from './tabs-body.vue'
+import TabsItem from './tabs-item.vue'
+import TabsPane from './tabs-pane.vue'
 
 
 Vue.component('g-input', Input)
@@ -27,7 +32,11 @@ Vue.component('g-header', Header)
 Vue.component('g-footer', Footer)
 Vue.component('g-toast', Toast)
 Vue.use(Plugin)
-
+Vue.component('g-tabs', Tabs)
+Vue.component('g-tabs-head', TabsHead)
+Vue.component('g-tabs-body', TabsBody)
+Vue.component('g-tabs-item', TabsItem)
+Vue.component('g-tabs-pane', TabsPane)
 
 new Vue({
     el: '#app',
