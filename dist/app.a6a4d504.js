@@ -13767,8 +13767,8 @@ var _default = {
       eventBus: this.eventBus
     };
   },
-  created: function created() {
-    this; //   this.$emit('update:selected','xxx')
+  mounted: function mounted() {
+    this.eventBus.$emit("update:selected", this.selected); //   this.$emit('update:selected','xxx')
   }
 };
 exports.default = _default;
@@ -13832,6 +13832,8 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   name: "GuluTabsHead",
   inject: ["eventBus"],
@@ -13853,7 +13855,11 @@ exports.default = _default;
   return _c(
     "div",
     { staticClass: "tabs-head" },
-    [_vm._t("default"), _vm._v(" "), _vm._t("actions")],
+    [
+      _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { staticClass: "warrp" }, [_vm._t("actions")], 2)
+    ],
     2
   )
 }
@@ -13969,7 +13975,14 @@ exports.default = void 0;
 //
 var _default = {
   name: "GuluTabsItem",
+  data: function data() {
+    // 不需要用户传值，自身维护
+    return {
+      active: false
+    };
+  },
   props: {
+    // 需要用户（前端）传值
     disabled: {
       type: Boolean,
       default: false
@@ -13981,9 +13994,22 @@ var _default = {
   },
   inject: ["eventBus"],
   created: function created() {
+    var _this = this;
+
     this.eventBus.$on("update:selected", function (name) {
-      console.log(name);
+      if (name === _this.name) {
+        _this.active = true;
+      } else {
+        _this.active = false;
+      }
     });
+  },
+  computed: {
+    classes: function classes() {
+      return {
+        active: this.active
+      };
+    }
   },
   methods: {
     xxx: function xxx() {
@@ -14006,7 +14032,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "tabs-item", on: { click: _vm.xxx } },
+    { staticClass: "tabs-item", class: _vm.classes, on: { click: _vm.xxx } },
     [_vm._t("default")],
     2
   )
@@ -14059,9 +14085,34 @@ exports.default = void 0;
 var _default = {
   name: "GuluTabsPane",
   inject: ["eventBus"],
+  props: {
+    name: {
+      type: String,
+      required: true
+    }
+  },
+  data: function data() {
+    // 不需要用户传值，自身维护
+    return {
+      active: false
+    };
+  },
+  computed: {
+    classes: function classes() {
+      return {
+        active: this.active
+      };
+    }
+  },
   created: function created() {
+    var _this = this;
+
     this.eventBus.$on("update:selected", function (name) {
-      console.log(name);
+      if (name === _this.name) {
+        _this.active = true;
+      } else {
+        _this.active = false;
+      }
     });
   }
 };
@@ -14078,7 +14129,12 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tabs-pane" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    { staticClass: "tabs-pane", class: _vm.classes },
+    [_vm._t("default")],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

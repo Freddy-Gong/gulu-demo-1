@@ -1,12 +1,19 @@
 <template>
-  <div class="tabs-item" @click="xxx">
+  <div class="tabs-item" :class="classes" @click="xxx">
     <slot></slot>
   </div>
 </template>
 <script>
 export default {
   name: "GuluTabsItem",
+  data() {
+    // 不需要用户传值，自身维护
+    return {
+      active: false
+    };
+  },
   props: {
+    // 需要用户（前端）传值
     disabled: {
       type: Boolean,
       default: false
@@ -19,8 +26,19 @@ export default {
   inject: ["eventBus"],
   created() {
     this.eventBus.$on("update:selected", name => {
-      console.log(name);
+      if (name === this.name) {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
     });
+  },
+  computed: {
+    classes() {
+      return {
+        active: this.active
+      };
+    }
   },
   methods: {
     xxx() {
@@ -30,4 +48,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.tabs-item {
+  padding: 0 1em;
+  &.active {
+    background: chartreuse;
+  }
+}
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div class="tabs-head">
     <slot></slot>
-    <slot name="actions"></slot>
+    <div class="warrp">
+      <slot name="actions"></slot>
+    </div>
   </div>
 </template>
 <script>
@@ -12,4 +14,14 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$tab-height: 40px;
+.tabs-head {
+  display: flex;
+  height: $tab-height;
+  justify-content: flex-start;
+  align-items: center;
+  .warrp {
+    margin-left: auto;
+  }
+}
 </style>

@@ -958,3 +958,25 @@
   flex-wrap: wrap;
   padding: 8px 0;
 }
+.tabs-head[data-v-a7fcde] {
+  display: flex;
+  height: 40px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.tabs-head .warrp[data-v-a7fcde] {
+  margin-left: auto;
+}
+.tabs-item[data-v-31d93c] {
+  padding: 0 1em;
+}
+.tabs-item.active[data-v-31d93c] {
+  background: chartreuse;
+}
+.tabs-pane[data-v-4c1e53] {
+  display: none;
+}
+.tabs-pane.active[data-v-4c1e53] {
+  display: block;
+  background: chartreuse;
+}
