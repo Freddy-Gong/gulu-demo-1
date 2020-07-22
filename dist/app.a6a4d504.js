@@ -13732,6 +13732,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _vue = _interopRequireDefault(require("vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //
 //
 //
@@ -13752,7 +13757,18 @@ var _default = {
       }
     }
   },
-  created: function created() {//   this.$emit('update:selected','xxx')
+  data: function data() {
+    return {
+      eventBus: new _vue.default()
+    };
+  },
+  provide: function provide() {
+    return {
+      eventBus: this.eventBus
+    };
+  },
+  created: function created() {
+    this; //   this.$emit('update:selected','xxx')
   }
 };
 exports.default = _default;
@@ -13803,7 +13819,7 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tabs-head.vue":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","_css_loader":"../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js"}],"src/tabs-head.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13817,7 +13833,9 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: "GuluTabsHead"
+  name: "GuluTabsHead",
+  inject: ["eventBus"],
+  created: function created() {}
 };
 exports.default = _default;
         var $a7fcde = exports.default || module.exports;
@@ -13885,7 +13903,9 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: "GuluTabsBody"
+  name: "GuluTabsBody",
+  inject: ["eventBus"],
+  created: function created() {}
 };
 exports.default = _default;
         var $8599b9 = exports.default || module.exports;
@@ -13953,6 +13973,21 @@ var _default = {
     disabled: {
       type: Boolean,
       default: false
+    },
+    name: {
+      type: [String, Number],
+      required: true
+    }
+  },
+  inject: ["eventBus"],
+  created: function created() {
+    this.eventBus.$on("update:selected", function (name) {
+      console.log(name);
+    });
+  },
+  methods: {
+    xxx: function xxx() {
+      this.eventBus.$emit("update:selected", this.name);
     }
   }
 };
@@ -13969,7 +14004,12 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tabs-item" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    { staticClass: "tabs-item", on: { click: _vm.xxx } },
+    [_vm._t("default")],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -14017,7 +14057,13 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: "GuluTabsPane"
+  name: "GuluTabsPane",
+  inject: ["eventBus"],
+  created: function created() {
+    this.eventBus.$on("update:selected", function (name) {
+      console.log(name);
+    });
+  }
 };
 exports.default = _default;
         var $4c1e53 = exports.default || module.exports;
@@ -14149,10 +14195,7 @@ _vue.default.component('g-tabs-pane', _tabsPane.default);
 new _vue.default({
   el: '#app',
   data: {
-    loading1: false,
-    loading2: false,
-    loading3: false,
-    message: 'hi'
+    selectedTab: 'sports'
   },
   created: function created() {},
   methods: {

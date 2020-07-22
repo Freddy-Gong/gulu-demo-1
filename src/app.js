@@ -41,10 +41,7 @@ Vue.component('g-tabs-pane', TabsPane)
 new Vue({
     el: '#app',
     data: {
-        loading1: false,
-        loading2: false,
-        loading3: false,
-        message: 'hi'
+        selectedTab: 'sports'
     },
     created() {
 
