@@ -49,7 +49,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .tabs-item {
+  display: flex;
+  align-items: center;
   padding: 0 1em;
+  height: 100%;
+  cursor: pointer;
   &.active {
     background: chartreuse;
   }

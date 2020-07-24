@@ -962,13 +962,16 @@
   display: flex;
   height: 40px;
   justify-content: flex-start;
-  align-items: center;
 }
 .tabs-head .warrp[data-v-a7fcde] {
   margin-left: auto;
 }
 .tabs-item[data-v-31d93c] {
+  display: flex;
+  align-items: center;
   padding: 0 1em;
+  height: 100%;
+  cursor: pointer;
 }
 .tabs-item.active[data-v-31d93c] {
   background: chartreuse;
