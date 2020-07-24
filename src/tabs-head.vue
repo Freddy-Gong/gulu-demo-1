@@ -23,6 +23,7 @@ export default {
 <style lang="scss" scoped>
 $tab-height: 40px;
 .tabs-head {
+  border-bottom: 1px solid #ddd;
   position: relative;
   display: flex;
   height: $tab-height;
@@ -34,6 +35,10 @@ $tab-height: 40px;
     transition: all 0.3s;
   }
   .warrp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1em;
     margin-left: auto;
   }
 }

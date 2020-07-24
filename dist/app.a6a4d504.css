@@ -959,6 +959,7 @@
   padding: 8px 0;
 }
 .tabs-head[data-v-a7fcde] {
+  border-bottom: 1px solid #ddd;
   position: relative;
   display: flex;
   height: 40px;
@@ -971,6 +972,10 @@
   transition: all 0.3s;
 }
 .tabs-head .warrp[data-v-a7fcde] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1em;
   margin-left: auto;
 }
 .tabs-item[data-v-31d93c] {
@@ -986,8 +991,8 @@
 }
 .tabs-pane[data-v-4c1e53] {
   display: none;
+  padding: 1em;
 }
 .tabs-pane.active[data-v-4c1e53] {
   display: block;
-  background: chartreuse;
 }

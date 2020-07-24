@@ -40,9 +40,9 @@ export default {
 <style lang="scss" scoped>
 .tabs-pane {
   display: none;
+  padding: 1em;
   &.active {
     display: block;
-    background: chartreuse;
   }
 }
 </style>
