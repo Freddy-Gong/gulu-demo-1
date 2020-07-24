@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     xxx() {
-      this.eventBus.$emit("update:selected", this.name);
+      this.eventBus.$emit("update:selected", this.name, this);
     }
   }
 };
@@ -55,7 +55,8 @@ export default {
   height: 100%;
   cursor: pointer;
   &.active {
-    background: chartreuse;
+    color: blue;
+    font-weight: bold;
   }
 }
 </style>

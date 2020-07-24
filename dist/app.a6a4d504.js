@@ -13768,7 +13768,17 @@ var _default = {
     };
   },
   mounted: function mounted() {
-    this.eventBus.$emit("update:selected", this.selected); //   this.$emit('update:selected','xxx')
+    var _this = this;
+
+    this.$children.forEach(function (vm) {
+      if (vm.$options.name === "GuluTabsHead") {
+        vm.$children.forEach(function (item) {
+          if (item.$options.name === "GuluTabsItem" && item.name === _this.selected) {
+            _this.eventBus.$emit("update:selected", _this.selected, item);
+          }
+        });
+      }
+    }); //   this.$emit('update:selected','xxx')
   }
 };
 exports.default = _default;
@@ -13834,10 +13844,16 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   name: "GuluTabsHead",
   inject: ["eventBus"],
-  created: function created() {}
+  created: function created() {
+    this.eventBus.$on("update:selected", function (item, vm) {
+      console.log(item);
+      console.log(vm);
+    });
+  }
 };
 exports.default = _default;
         var $a7fcde = exports.default || module.exports;
@@ -13857,6 +13873,8 @@ exports.default = _default;
     { staticClass: "tabs-head" },
     [
       _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { ref: "line", staticClass: "line" }),
       _vm._v(" "),
       _c("div", { staticClass: "warrp" }, [_vm._t("actions")], 2)
     ],
@@ -14013,7 +14031,7 @@ var _default = {
   },
   methods: {
     xxx: function xxx() {
-      this.eventBus.$emit("update:selected", this.name);
+      this.eventBus.$emit("update:selected", this.name, this);
     }
   }
 };
