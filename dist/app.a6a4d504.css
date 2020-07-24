@@ -989,6 +989,10 @@
   color: blue;
   font-weight: bold;
 }
+.tabs-item.disabled[data-v-31d93c] {
+  color: gray;
+  cursor: not-allowed;
+}
 .tabs-pane[data-v-4c1e53] {
   display: none;
   padding: 1em;
