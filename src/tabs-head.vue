@@ -11,10 +11,11 @@
 export default {
   name: "GuluTabsHead",
   inject: ["eventBus"],
-  created() {
+  mounted() {
     this.eventBus.$on("update:selected", (item, vm) => {
-      console.log(item);
-      console.log(vm);
+      let { width, height, top, left } = vm.$el.getBoundingClientRect();
+      this.$refs.line.style.width = `${width}px`;
+      this.$refs.line.style.left = `${left}px`;
     });
   }
 };
@@ -29,8 +30,8 @@ $tab-height: 40px;
   > .line {
     position: absolute;
     bottom: 0;
-    width: 80px;
     border-bottom: 1px solid blue;
+    transition: all 0.3s;
   }
   .warrp {
     margin-left: auto;

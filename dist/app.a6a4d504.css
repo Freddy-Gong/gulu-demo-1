@@ -967,8 +967,8 @@
 .tabs-head > .line[data-v-a7fcde] {
   position: absolute;
   bottom: 0;
-  width: 80px;
   border-bottom: 1px solid blue;
+  transition: all 0.3s;
 }
 .tabs-head .warrp[data-v-a7fcde] {
   margin-left: auto;
