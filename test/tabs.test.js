@@ -1,6 +1,5 @@
 const expect = chai.expect;
 import Vue from 'vue'
-import Tabs from '../src/tabs'
 import Tabs from '../src/tabs.vue'
 import TabsHead from '../src/tabs-head.vue'
 import TabsBody from '../src/tabs-body.vue'
@@ -21,9 +20,43 @@ describe('Tabs', () => {
         expect(Tabs).to.exist
     })
     describe('接受外部数据', () => {
-        it('子组件只能是 tabs-head 和 tabs-body', () => {
-
+        it('接受selected', (done) => {
+            const div = document.createElement('div')
+            document.body.appendChild(div)
+            div.innerHTML = `
+            <g-tabs selected="finance">
+                <g-tabs-head>
+                    <g-tabs-item name="woman" >
+                        美女
+                    </g-tabs-item>
+                    <g-tabs-item name="finance">
+                        财经
+                    </g-tabs-item>
+                    <g-tabs-item name="sports">
+                        体育
+                    </g-tabs-item>
+                </g-tabs-head>
+                <g-tabs-body>
+                    <g-tabs-pane name="woman">
+                        美女有关的内容
+                    </g-tabs-pane>
+                    <g-tabs-pane name="finance">
+                        财经有关的内容
+                    </g-tabs-pane>
+                    <g-tabs-pane name="sports">
+                        体育有关的内容
+                    </g-tabs-pane>
+                </g-tabs-body>
+            </g-tabs>
+            `
+            let vm = new Vue({
+                el: div
+            })
+            vm.$nextTick(() => {
+                let x = vm.$el.querySelector(`.tabs-item[data-name="finance"]`)
+                expect(x.classList.contains('active')).to.be.true
+                done()
+            })
         })
     })
-
 })

@@ -31,6 +31,11 @@ export default {
     };
   },
   mounted() {
+    if (this.$children.length === 0) {
+      throw new Error(
+        "tabs的子组件应该是tabs-head 和 tabs-body,但你没有写子组件"
+      );
+    } //$children只能获取到子组件，不能获取到子元素
     this.$children.forEach(vm => {
       if (vm.$options.name === "GuluTabsHead") {
         vm.$children.forEach(childvm => {

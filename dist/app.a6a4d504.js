@@ -13770,6 +13770,11 @@ var _default = {
   mounted: function mounted() {
     var _this = this;
 
+    if (this.$children.length === 0) {
+      throw new Error("tabs的子组件应该是tabs-head 和 tabs-body,但你没有写子组件");
+    } //$children只能获取到子组件，不能获取到子元素
+
+
     this.$children.forEach(function (vm) {
       if (vm.$options.name === "GuluTabsHead") {
         vm.$children.forEach(function (childvm) {
@@ -14022,7 +14027,7 @@ var _default = {
   created: function created() {
     var _this = this;
 
-    this.eventBus.$on("update:selected", function (name) {
+    this.eventBus && this.eventBus.$on("update:selected", function (name) {
       if (name === _this.name) {
         _this.active = true;
       } else {
@@ -14044,7 +14049,8 @@ var _default = {
         return;
       }
 
-      this.eventBus.$emit("update:selected", this.name, this);
+      this.eventBus && this.eventBus.$emit("update:selected", this.name, this);
+      this.$emit("click", this);
     }
   }
 };
@@ -14066,6 +14072,7 @@ exports.default = _default;
     {
       staticClass: "tabs-item",
       class: _vm.classes,
+      attrs: { "data-name": _vm.name },
       on: { click: _vm.onClick }
     },
     [_vm._t("default")],

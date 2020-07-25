@@ -1,0 +1,47 @@
+const expect = chai.expect;
+import Vue from 'vue'
+import Tabs from '../src/tabs.vue'
+import TabsHead from '../src/tabs-head.vue'
+import TabsBody from '../src/tabs-body.vue'
+import TabsItem from '../src/tabs-item.vue'
+import TabsPane from '../src/tabs-pane.vue'
+
+Vue.config.productionTip = false
+Vue.config.devtools = false
+Vue.component('g-tabs', Tabs)
+Vue.component('g-tabs-head', TabsHead)
+Vue.component('g-tabs-body', TabsBody)
+Vue.component('g-tabs-item', TabsItem)
+Vue.component('g-tabs-pane', TabsPane)
+
+
+describe('TabsItem', () => {
+    it('存在.', () => {
+        expect(TabsItem).to.exist
+    })
+    describe('接受外部数据', () => {
+        it('接受name属性', () => {
+            const Constructor = Vue.extend(TabsItem)
+            const vm = new Constructor({
+                propsData: {
+                    name: 'xxx'
+                }
+            }).$mount()
+            expect(vm.$el.getAttribute('data-name')).to.equal('xxx')
+        })
+        it('接受disable属性', () => {
+            const Constructor = Vue.extend(TabsItem)
+            const vm = new Constructor({
+                propsData: {
+                    disable: true
+                }
+            }).$mount()
+            expect(vm.$el.classList.contains('disabled')).to.be.true
+            const callback = sinon.fake()
+            vm.$on('click', callback)
+            vm.$el.click()
+            expect(callback).to.have.been.called
+        })
+    })
+
+})
