@@ -29,18 +29,18 @@ describe('TabsItem', () => {
             }).$mount()
             expect(vm.$el.getAttribute('data-name')).to.equal('xxx')
         })
-        it('接受disable属性', () => {
+        it('接受disabled属性', () => {
             const Constructor = Vue.extend(TabsItem)
             const vm = new Constructor({
                 propsData: {
-                    disable: true
+                    disabled: true
                 }
             }).$mount()
-            expect(vm.$el.classList.contains('disabled')).to.be.true
+            // expect(vm.$el.classList.contains('disabled')).to.be.true
             const callback = sinon.fake()
             vm.$on('click', callback)
             vm.$el.click()
-            expect(callback).to.have.been.called
+            expect(callback).to.have.not.been.called
         })
     })
 
