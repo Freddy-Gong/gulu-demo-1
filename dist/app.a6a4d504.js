@@ -14260,6 +14260,10 @@ var _default = {
         return;
       }
 
+      if (this.$refs.contentWrapper && (this.$refs.contentWrapper.contains(e.target) || this.$refs.contentWrapper === e.target)) {
+        return;
+      }
+
       this.close();
     },
     open: function open() {
@@ -14313,7 +14317,12 @@ exports.default = _default;
           )
         : _vm._e(),
       _vm._v(" "),
-      _c("span", { ref: "triggerWrapper" }, [_vm._t("default")], 2)
+      _c(
+        "span",
+        { ref: "triggerWrapper", staticStyle: { display: "inline-block" } },
+        [_vm._t("default")],
+        2
+      )
     ]
   )
 }
@@ -14440,11 +14449,8 @@ new _vue.default({
   },
   created: function created() {},
   methods: {
-    yyy: function yyy() {
-      console.log('yyy');
-    },
     showToast: function showToast() {
-      this.$toast('wasdawsdaasdasdadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssss', {
+      this.$toast('内容', {
         position: 'middle',
         closeButton: {
           text: '知道',

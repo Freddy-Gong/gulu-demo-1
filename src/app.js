@@ -51,11 +51,8 @@ new Vue({
 
     },
     methods: {
-        yyy() {
-            console.log('yyy')
-        },
         showToast() {
-            this.$toast('wasdawsdaasdasdadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssss', {
+            this.$toast('内容', {
                 position: 'middle',
                 closeButton: {
                     text: '知道',

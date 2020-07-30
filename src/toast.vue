@@ -19,7 +19,7 @@ export default {
       default: false,
       validator(value) {
         return value === false || typeof value === "number";
-      }
+      },
     },
     closeButton: {
       type: Object,
@@ -27,21 +27,21 @@ export default {
         //如果你的default值是一个对象，不能直接写成一个对象，而是要写成一个函数，再return这个对象。
         return {
           text: "关闭",
-          callback: undefined
+          callback: undefined,
         };
-      }
+      },
     },
     enableHtml: {
       type: Boolean,
-      default: false
+      default: false,
     },
     position: {
       type: String,
       default: "top",
       validator(value) {
         return ["top", "middle", "bottom"].indexOf(value) >= 0;
-      }
-    }
+      },
+    },
   },
   mounted() {
     this.upDateStyles();
@@ -72,13 +72,13 @@ export default {
       this.close();
       if (this.closeButton && typeof this.closeButton.callback === "function")
         this.closeButton.callback();
-    }
+    },
   },
   computed: {
     toastClasses() {
       return { [`position-${this.position}`]: true };
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -166,6 +166,7 @@ $toast-bg: rgba(62, 63, 66, 0.4);
     margin-left: 16px;
   }
   .message {
+    word-break: break-all;
     display: flex;
     flex-wrap: wrap;
     padding: 8px 0;
