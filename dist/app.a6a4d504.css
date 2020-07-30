@@ -1000,3 +1000,15 @@
 .tabs-pane.active[data-v-4c1e53] {
   display: block;
 }
+.popover[data-v-a8f9d9] {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+.popover .content-wrapper[data-v-a8f9d9] {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  border: 1px solid red;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
