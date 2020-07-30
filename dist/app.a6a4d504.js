@@ -13767,23 +13767,30 @@ var _default = {
       eventBus: this.eventBus
     };
   },
+  methods: {
+    checkChildren: function checkChildren() {
+      if (this.$children.length === 0) {
+        throw new Error("tabs的子组件应该是tabs-head 和 tabs-body,但你没有写子组件");
+      } //$children只能获取到子组件，不能获取到子元素
+
+    },
+    selectTab: function selectTab() {
+      var _this = this;
+
+      this.$children.forEach(function (vm) {
+        if (vm.$options.name === "GuluTabsHead") {
+          vm.$children.forEach(function (childvm) {
+            if (childvm.$options.name === "GuluTabsItem" && childvm.name === _this.selected) {
+              _this.eventBus.$emit("update:selected", _this.selected, childvm);
+            }
+          });
+        }
+      }); //   this.$emit('update:selected','xxx')
+    }
+  },
   mounted: function mounted() {
-    var _this = this;
-
-    if (this.$children.length === 0) {
-      throw new Error("tabs的子组件应该是tabs-head 和 tabs-body,但你没有写子组件");
-    } //$children只能获取到子组件，不能获取到子元素
-
-
-    this.$children.forEach(function (vm) {
-      if (vm.$options.name === "GuluTabsHead") {
-        vm.$children.forEach(function (childvm) {
-          if (childvm.$options.name === "GuluTabsItem" && childvm.name === _this.selected) {
-            _this.eventBus.$emit("update:selected", _this.selected, childvm);
-          }
-        });
-      }
-    }); //   this.$emit('update:selected','xxx')
+    this.checkChildren();
+    this.selectTab();
   }
 };
 exports.default = _default;
