@@ -51,6 +51,9 @@ new Vue({
 
     },
     methods: {
+        yyy() {
+            console.log('yyy')
+        },
         showToast() {
             this.$toast('wasdawsdaasdasdadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssss', {
                 position: 'middle',
