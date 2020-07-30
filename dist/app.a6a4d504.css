@@ -1010,11 +1010,9 @@
   position: absolute;
   border: 1px solid #333;
   border-radius: 4px;
-  transform: translateY(-100%);
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
   background: white;
   padding: 0.5em 1em;
-  margin-top: -0.6em;
   max-width: 20em;
   word-break: break-all;
 }
@@ -1024,14 +1022,65 @@
   position: absolute;
   width: 0;
   height: 0;
-  left: 0.6em;
   border: 10px solid transparent;
 }
-.content-wrapper[data-v-a8f9d9]::before {
+.content-wrapper.position-top[data-v-a8f9d9] {
+  transform: translateY(-100%);
+  margin-top: -0.6em;
+}
+.content-wrapper.position-top[data-v-a8f9d9]::before, .content-wrapper.position-top[data-v-a8f9d9]::after {
+  left: 0.6em;
+}
+.content-wrapper.position-top[data-v-a8f9d9]::before {
   border-top-color: #333;
   top: 100%;
 }
-.content-wrapper[data-v-a8f9d9]::after {
+.content-wrapper.position-top[data-v-a8f9d9]::after {
   border-top-color: white;
   top: calc(100% - 1px);
+}
+.content-wrapper.position-bottom[data-v-a8f9d9] {
+  margin-top: 0.6em;
+}
+.content-wrapper.position-bottom[data-v-a8f9d9]::before, .content-wrapper.position-bottom[data-v-a8f9d9]::after {
+  left: 0.6em;
+}
+.content-wrapper.position-bottom[data-v-a8f9d9]::before {
+  border-bottom-color: #333;
+  bottom: 100%;
+}
+.content-wrapper.position-bottom[data-v-a8f9d9]::after {
+  border-bottom-color: white;
+  bottom: calc(100% - 1px);
+}
+.content-wrapper.position-left[data-v-a8f9d9] {
+  transform: translateX(-100%);
+  margin-left: -0.6em;
+}
+.content-wrapper.position-left[data-v-a8f9d9]::before, .content-wrapper.position-left[data-v-a8f9d9]::after {
+  transform: translateY(-50%);
+  top: 50%;
+}
+.content-wrapper.position-left[data-v-a8f9d9]::before {
+  border-left-color: #333;
+  left: 100%;
+}
+.content-wrapper.position-left[data-v-a8f9d9]::after {
+  border-left-color: white;
+  left: calc(100% - 1px);
+}
+.content-wrapper.position-right[data-v-a8f9d9] {
+  margin-left: 0.6em;
+}
+.content-wrapper.position-right[data-v-a8f9d9]::before, .content-wrapper.position-right[data-v-a8f9d9]::after {
+  transform: translateY(-50%);
+  top: 50%;
+}
+.content-wrapper.position-right[data-v-a8f9d9]::before {
+  border-right-color: #333;
+  right: 100%;
+}
+.content-wrapper.position-right[data-v-a8f9d9]::after {
+  border-right-color: white;
+  right: calc(100% - 1px);
 }
