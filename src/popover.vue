@@ -39,8 +39,8 @@ export default {
     if (this.trigger === "click") {
       this.$refs.popover.addEventListener("click", this.onClick);
     } else {
-      this.$refs.popover.addEventListener("mouseenter", this.mouseOpen);
-      this.$refs.popover.addEventListener("mouseleave", this.mouseClose);
+      this.$refs.popover.addEventListener("mouseenter", this.open);
+      this.$refs.popover.addEventListener("mouseleave", this.close);
     }
   },
   destroyed() {
@@ -111,6 +111,8 @@ export default {
       let contentWrapper = document.querySelector(".content-wrapper");
       if (contentWrapper) {
         contentWrapper.parentNode.removeChild(contentWrapper);
+        document.removeEventListener("click", this.eventHandle);
+        this.visible = false;
       }
       this.visible = true;
       setTimeout(() => {
@@ -119,6 +121,7 @@ export default {
     },
     onClick(event) {
       if (this.$refs.triggerWrapper.contains(event.target)) {
+        console.log(this.visible);
         if (this.visible === true) {
           this.close();
         } else {
@@ -128,6 +131,7 @@ export default {
     },
     mouseClose() {
       this.visible = false;
+      console.log(this.visible);
     },
     close() {
       this.visible = false;

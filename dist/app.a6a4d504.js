@@ -14267,8 +14267,8 @@ var _default = {
     if (this.trigger === "click") {
       this.$refs.popover.addEventListener("click", this.onClick);
     } else {
-      this.$refs.popover.addEventListener("mouseenter", this.mouseOpen);
-      this.$refs.popover.addEventListener("mouseleave", this.mouseClose);
+      this.$refs.popover.addEventListener("mouseenter", this.open);
+      this.$refs.popover.addEventListener("mouseleave", this.close);
     }
   },
   destroyed: function destroyed() {
@@ -14344,6 +14344,8 @@ var _default = {
 
       if (contentWrapper) {
         contentWrapper.parentNode.removeChild(contentWrapper);
+        document.removeEventListener("click", this.eventHandle);
+        this.visible = false;
       }
 
       this.visible = true;
@@ -14353,6 +14355,8 @@ var _default = {
     },
     onClick: function onClick(event) {
       if (this.$refs.triggerWrapper.contains(event.target)) {
+        console.log(this.visible);
+
         if (this.visible === true) {
           this.close();
         } else {
@@ -14362,6 +14366,7 @@ var _default = {
     },
     mouseClose: function mouseClose() {
       this.visible = false;
+      console.log(this.visible);
     },
     close: function close() {
       this.visible = false;
