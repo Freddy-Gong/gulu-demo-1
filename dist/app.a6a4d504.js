@@ -14376,7 +14376,7 @@ exports.default = _default;
             class:
               ((_obj = {}), (_obj["position-" + _vm.position] = true), _obj)
           },
-          [_vm._t("content")],
+          [_vm._t("content", null, { close: _vm.close })],
           2
         )
       : _vm._e(),
@@ -14554,7 +14554,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62186" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52702" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
