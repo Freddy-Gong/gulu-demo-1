@@ -14467,6 +14467,9 @@ var _default = {
     single: {
       type: Boolean,
       default: false
+    },
+    selected: {
+      type: String
     }
   },
   data: function data() {
@@ -14475,11 +14478,12 @@ var _default = {
     };
   },
   provide: function provide() {
-    if (this.single) {
-      return {
-        eventBus: this.eventBus
-      };
-    }
+    return {
+      eventBus: this.eventBus
+    };
+  },
+  mounted: function mounted() {
+    this.eventBus.$emit("update:selected", this.selected);
   }
 };
 exports.default = _default;
@@ -14550,7 +14554,11 @@ var _default = {
   props: {
     title: {
       type: String,
-      require: true
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
     }
   },
   data: function data() {
@@ -14558,12 +14566,15 @@ var _default = {
       open: false
     };
   },
+  inject: ["eventBus"],
   mounted: function mounted() {
     var _this = this;
 
-    this.eventBus && this.eventBus.$on("updata:selected", function (vm) {
-      if (vm !== _this) {
+    this.eventBus && this.eventBus.$on("update:selected", function (name) {
+      if (name !== _this.name) {
         _this.open = false;
+      } else {
+        _this.open = true;
       }
     });
   },
@@ -14572,12 +14583,10 @@ var _default = {
       if (this.open) {
         this.open = false;
       } else {
-        this.open = true;
-        this.eventBus && this.eventBus.$emit("updata:selected", this);
+        this.eventBus && this.eventBus.$emit("update:selected", this.name);
       }
     }
-  },
-  inject: ["eventBus"]
+  }
 };
 exports.default = _default;
         var $e3d884 = exports.default || module.exports;

@@ -12,7 +12,11 @@ export default {
   props: {
     title: {
       type: String,
-      require: true,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
     },
   },
   data() {
@@ -20,11 +24,14 @@ export default {
       open: false,
     };
   },
+  inject: ["eventBus"],
   mounted() {
     this.eventBus &&
-      this.eventBus.$on("updata:selected", (vm) => {
-        if (vm !== this) {
+      this.eventBus.$on("update:selected", (name) => {
+        if (name !== this.name) {
           this.open = false;
+        } else {
+          this.open = true;
         }
       });
   },
@@ -33,12 +40,10 @@ export default {
       if (this.open) {
         this.open = false;
       } else {
-        this.open = true;
-        this.eventBus && this.eventBus.$emit("updata:selected", this);
+        this.eventBus && this.eventBus.$emit("update:selected", this.name);
       }
     },
   },
-  inject: ["eventBus"],
 };
 </script>
 <style lang="scss" scoped>
