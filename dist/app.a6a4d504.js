@@ -14267,8 +14267,8 @@ var _default = {
     if (this.trigger === "click") {
       this.$refs.popover.addEventListener("click", this.onClick);
     } else {
-      this.$refs.popover.addEventListener("mouseenter", this.open);
-      this.$refs.popover.addEventListener("mouseleave", this.close);
+      this.$refs.popover.addEventListener("mouseenter", this.mouseOpen);
+      this.$refs.popover.addEventListener("mouseleave", this.mouseClose);
     }
   },
   destroyed: function destroyed() {
@@ -14337,6 +14337,20 @@ var _default = {
         document.addEventListener("click", _this.onClickDocument);
       });
     },
+    mouseOpen: function mouseOpen() {
+      var _this2 = this;
+
+      var contentWrapper = document.querySelector(".content-wrapper");
+
+      if (contentWrapper) {
+        contentWrapper.parentNode.removeChild(contentWrapper);
+      }
+
+      this.visible = true;
+      setTimeout(function () {
+        _this2.positionContent();
+      });
+    },
     onClick: function onClick(event) {
       if (this.$refs.triggerWrapper.contains(event.target)) {
         if (this.visible === true) {
@@ -14345,6 +14359,9 @@ var _default = {
           this.open();
         }
       }
+    },
+    mouseClose: function mouseClose() {
+      this.visible = false;
     },
     close: function close() {
       this.visible = false;
