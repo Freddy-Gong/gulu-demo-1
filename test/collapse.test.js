@@ -11,7 +11,7 @@ describe('Collapse', () => {
     it('存在.', () => {
         expect(Collapse).to.be.exist
     })
-    it('接受single属性', (done) => {
+    xit('接受single属性', (done) => {
         Vue.component('g-collapse', Collapse)
         Vue.component('g-collapse-item', CollapseItem)
         const div = document.createElement('div')
