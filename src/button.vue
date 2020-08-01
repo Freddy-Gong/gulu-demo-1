@@ -12,13 +12,13 @@ import Icon from "./icon";
 export default {
   //   props: ["icon", "iconPosition"]
   components: {
-    "g-icon": Icon
+    "g-icon": Icon,
   },
   props: {
     icon: {},
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     iconPosition: {
       type: String,
@@ -30,12 +30,20 @@ export default {
         // } else {
         //   return true;
         // } 简化
-      }
-    }
-  }
+      },
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
+$font-size: 14px;
+$button-height: 32px;
+$button-bg: white;
+$button-active-bg: #eee;
+$border-radius: 4px;
+$color: #333;
+$border-color: #999;
+$border-color-hover: #666;
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -45,18 +53,18 @@ export default {
   }
 }
 .g-button {
-  font-size: var(--font-size);
-  height: var(--button-height);
+  font-size: $font-size;
+  height: $button-height;
   padding: 0 1em;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  background: var(--button-bg);
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  background: $button-bg;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   vertical-align: middle; //inline元素对不齐就加这句话
   &:hover {
-    border-color: var(--border-color-hover);
+    border-color: $border-color-hover;
   }
 
   &:focus {
@@ -64,13 +72,13 @@ export default {
   }
 
   &:active {
-    background-color: var(--button-active-bg);
+    background-color: $button-active-bg;
   }
   > .icon {
     order: 1;
     margin-right: 0.3em;
   }
-  > .content {
+  > .g-button-content {
     order: 2;
   }
   &.icon-right {
@@ -79,7 +87,7 @@ export default {
       margin-left: 0.3em;
       margin-right: 0;
     }
-    > .content {
+    > .g-button-content {
       order: 1;
     }
   }
