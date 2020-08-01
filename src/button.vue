@@ -53,26 +53,35 @@ $border-color-hover: #666;
   }
 }
 .g-button {
-  font-size: $font-size;
+  padding: 8px;
+  border: 0;
   height: $button-height;
   padding: 0 1em;
-  border-radius: $border-radius;
-  border: 1px solid $border-color;
+  border-radius: 10px;
+  font-size: $font-size;
+  font-family: Helvetica;
+  font-weight: normal;
+  color: $color;
+  box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1),
+    4px 4px 10px -8px rgba(0, 0, 0, 1),
+    -4px -4px 10px -8px rgba(255, 255, 255, 1),
+    4px 4px 10px -8px rgba(0, 0, 0, 1);
   background: $button-bg;
+  border: 0.5px solid white;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   vertical-align: middle; //inline元素对不齐就加这句话
-  &:hover {
-    border-color: $border-color-hover;
-  }
 
+  &:active {
+    box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1) inset,
+      4px 4px 10px -8px rgba(0, 0, 0, 1) inset;
+  }
   &:focus {
     outline: none;
   }
-
-  &:active {
-    background-color: $button-active-bg;
+  &:hover {
+    border: 0.5px solid #eee;
   }
   > .icon {
     order: 1;

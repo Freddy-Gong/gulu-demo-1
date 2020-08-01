@@ -6,11 +6,12 @@
 <script>
 import "./svg";
 export default {
-  props: ["name"]
+  props: ["name"],
 };
 </script>
 <style lang="scss" scoped>
 .g-icon {
+  margin: 0.2em;
   width: 1em;
   height: 1em;
 }
