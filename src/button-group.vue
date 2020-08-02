@@ -14,7 +14,7 @@ export default {
         );
       }
     }
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -23,21 +23,33 @@ export default {
   vertical-align: middle;
   > .g-button {
     border-radius: 0;
-    &:not(:first-child) {
-      margin-left: -1px;
-    }
     &:first-child {
-      border-top-left-radius: var(--border-radius);
-      border-bottom-left-radius: var(--border-radius);
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      box-shadow: 4px -4px 10px -8px rgba(255, 255, 255, 1),
+        -4px 4px 10px -8px rgba(0, 0, 0, 1),
+        4px -4px 10px -8px rgba(255, 255, 255, 1),
+        -4px 4px 10px -8px rgba(0, 0, 0, 1);
     }
     &:last-child {
-      border-top-right-radius: var(--border-radius);
-      border-bottom-right-radius: var(--border-radius);
-    }
-    &:hover {
-      position: relative;
-      z-index: 1;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
     }
   }
 }
+// .g-button-group {
+//   display: inline-flex;
+//
+//   > .g-button {
+//
+//     &:not(:first-child) {
+//       margin-left: -1px;
+//     }
+//
+//     &:hover {
+//       position: relative;
+//       z-index: 1;
+//     }
+//   }
+// }
 </style>

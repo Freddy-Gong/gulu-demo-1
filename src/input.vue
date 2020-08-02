@@ -22,27 +22,27 @@ export default {
   components: { Icon },
   props: {
     value: {
-      type: String
+      type: String,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     readonly: {
       type: Boolean,
-      default: false
+      default: false,
     },
     error: {
-      type: String
-    }
-  }
+      type: String,
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 $height: 32px;
 $border-color: #999;
-$border-color-hover: #666;
-$border-radius: 4px;
+$border-color-hover: white;
+$border-radius: 10px;
 $font-size: 12px;
 $box-shadow-color: rgba(0, 0, 0, 0.5);
 $red: #f1453d;
@@ -60,21 +60,32 @@ $red: #f1453d;
   }
   > input {
     height: $height;
-    border: 1px solid $border-color;
     border-radius: $border-radius;
     padding: 0 0 0 8px;
+    box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1),
+      4px 4px 10px -8px rgba(0, 0, 0, 1),
+      -4px -4px 10px -8px rgba(255, 255, 255, 1),
+      4px 4px 10px -8px rgba(0, 0, 0, 1);
+    background: linear-gradient(
+      135deg,
+      rgba(230, 230, 230, 1) 0%,
+      rgba(246, 246, 246, 1) 100%
+    );
+    border: 0.5px solid #eee;
     &:hover {
       border-color: $border-color-hover;
     }
     &:focus {
       outline: none;
-      box-shadow: inset 0 1px 3px $box-shadow-color;
+      box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1) inset,
+        4px 4px 10px -8px rgba(0, 0, 0, 1) inset;
     }
     &[disabled],
     &[readonly] {
       border-color: #bbb;
       color: #bbb;
       cursor: not-allowed;
+      box-shadow: none;
     }
   }
 }

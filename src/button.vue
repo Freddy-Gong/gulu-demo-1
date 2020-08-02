@@ -40,7 +40,7 @@ $font-size: 14px;
 $button-height: 32px;
 $button-bg: white;
 $button-active-bg: #eee;
-$border-radius: 4px;
+$border-radius: 10px;
 $color: #333;
 $border-color: #999;
 $border-color-hover: #666;
@@ -57,7 +57,7 @@ $border-color-hover: #666;
   border: 0;
   height: $button-height;
   padding: 0 1em;
-  border-radius: 10px;
+  border-radius: $border-radius;
   font-size: $font-size;
   font-family: Helvetica;
   font-weight: normal;
@@ -66,8 +66,13 @@ $border-color-hover: #666;
     4px 4px 10px -8px rgba(0, 0, 0, 1),
     -4px -4px 10px -8px rgba(255, 255, 255, 1),
     4px 4px 10px -8px rgba(0, 0, 0, 1);
-  background: $button-bg;
-  border: 0.5px solid white;
+  background: linear-gradient(
+    135deg,
+    rgba(230, 230, 230, 1) 0%,
+    rgba(246, 246, 246, 1) 100%
+  );
+  border: 0.5px solid #eee;
+
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -81,7 +86,7 @@ $border-color-hover: #666;
     outline: none;
   }
   &:hover {
-    border: 0.5px solid #eee;
+    border: 0.5px solid white;
   }
   > .icon {
     order: 1;

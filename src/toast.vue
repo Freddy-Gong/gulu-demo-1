@@ -86,6 +86,7 @@ export default {
 $font-size: 14px;
 $toast-min-height: 40px;
 $toast-bg: rgba(62, 63, 66, 0.4);
+$color: #333;
 @keyframes slide-up {
   0% {
     opacity: 0;
@@ -149,17 +150,24 @@ $toast-bg: rgba(62, 63, 66, 0.4);
   min-height: $toast-min-height;
   display: flex;
   align-items: center;
-  background: $toast-bg;
-  border-radius: 4px;
-  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
-  color: white;
+  border-radius: 10px;
+  color: $color;
+  box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1),
+    4px 4px 10px -8px rgba(0, 0, 0, 1),
+    -4px -4px 10px -8px rgba(255, 255, 255, 1),
+    4px 4px 10px -8px rgba(0, 0, 0, 1);
+  background: linear-gradient(
+    135deg,
+    rgba(230, 230, 230, 1) 0%,
+    rgba(246, 246, 246, 1) 100%
+  );
+  border: 0.5px solid #eee;
   padding-left: 16px;
   .close {
     padding: 0 16px;
     cursor: pointer;
     flex-shrink: 0;
     height: inherit;
-    border: 1px solid red;
   }
   .line {
     border: 0.5px solid #666;
